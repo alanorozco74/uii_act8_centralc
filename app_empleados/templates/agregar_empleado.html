@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Agregar Empleado - Central Camionera</title>
+    <style>
+        body { 
+            font-family: Arial, sans-serif; 
+            margin: 40px; 
+            background-color: white;
+        }
+        h1 {
+            color: #333;
+            margin-bottom: 30px;
+            font-size: 24px;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input, select {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+            max-width: 400px;
+        }
+        button {
+            background-color: #007BFF;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            cursor: pointer;
+        }
+        .volver {
+            display: inline-block;
+            margin-top: 15px;
+            color: #007BFF;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>Agregar Empleado</h1>
+    
+    <form method="post">
+        {% csrf_token %}
+        
+        <div class="form-group">
+            <label>ID Empleado:</label>
+            <input type="text" name="id_empleado" required maxlength="10">
+        </div>
+
+        <div class="form-group">
+            <label>Nombre:</label>
+            <input type="text" name="nombre" required maxlength="50">
+        </div>
+
+        <div class="form-group">
+            <label>Apellido:</label>
+            <input type="text" name="apellido" required maxlength="50">
+        </div>
+
+        <div class="form-group">
+            <label>RFC:</label>
+            <input type="text" name="rfc" required maxlength="13">
+        </div>
+
+        <div class="form-group">
+            <label>Puesto:</label>
+            <select name="puesto" required>
+                <option value="">Seleccionar...</option>
+                <option value="Chofer">Chofer</option>
+                <option value="Administrativo">Administrativo</option>
+                <option value="Gerente">Gerente</option>
+                <option value="Mantenimiento">Mantenimiento</option>
+                <option value="Ventas">Ventas</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label>Fecha de Contratación:</label>
+            <input type="date" name="fecha_contratacion" required>
+        </div>
+
+        <button type="submit">Guardar</button>
+    </form>
+    
+    <a href="/" class="volver">Volver al listado</a>
+</body>
+</html>

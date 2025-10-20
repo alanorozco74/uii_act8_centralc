@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Central Camionera - Empleados</title>
+    <style>
+        body { 
+            font-family: Arial, sans-serif; 
+            margin: 40px; 
+            background-color: white;
+        }
+        h1 {
+            color: #333;
+            margin-bottom: 30px;
+            font-size: 24px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        th, td {
+            border: 1px solid #ccc;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+            font-weight: bold;
+        }
+        .btn-agregar {
+            background-color: #28A745;
+            color: white;
+            padding: 10px 15px;
+            text-decoration: none;
+            display: inline-block;
+            margin: 10px 0;
+        }
+        .btn-editar {
+            background-color: #007BFF;
+            color: white;
+            padding: 5px 10px;
+            text-decoration: none;
+            margin-right: 5px;
+        }
+        .btn-borrar {
+            background-color: #DC3545;
+            color: white;
+            padding: 5px 10px;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>Listado de Empleados</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>ID Empleado</th>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>RFC</th>
+                <th>Puesto</th>
+                <th>Fecha Contratación</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for empleado in empleados %}
+            <tr>
+                <td>{{ empleado.id_empleado }}</td>
+                <td>{{ empleado.nombre }}</td>
+                <td>{{ empleado.apellido }}</td>
+                <td>{{ empleado.rfc }}</td>
+                <td>{{ empleado.puesto }}</td>
+                <td>{{ empleado.fecha_contratacion }}</td>
+                <td>
+                    <a href="/editar/{{ empleado.id }}/" class="btn-editar">Editar</a>
+                    <a href="/borrar/{{ empleado.id }}/" class="btn-borrar">Borrar</a>
+                </td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="7" style="text-align: center;">No hay empleados registrados</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    
+    <a href="/agregar/" class="btn-agregar">Agregar Empleado</a>
+</body>
+</html>

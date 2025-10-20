@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Confirmar Borrado - Central Camionera</title>
+    <style>
+        body { 
+            font-family: Arial, sans-serif; 
+            margin: 40px; 
+            background-color: white;
+        }
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+        .info {
+            background: #f8f9fa;
+            padding: 15px;
+            margin: 20px 0;
+        }
+        .btn {
+            padding: 10px 15px;
+            text-decoration: none;
+            color: white;
+            margin: 5px;
+            display: inline-block;
+        }
+        .confirmar {
+            background-color: #DC3545;
+            border: none;
+            cursor: pointer;
+        }
+        .cancelar {
+            background-color: #6C757D;
+        }
+    </style>
+</head>
+<body>
+    <h1>¿Estás seguro de borrar este empleado?</h1>
+    
+    <div class="info">
+        <p><strong>ID Empleado:</strong> {{ empleado.id_empleado }}</p>
+        <p><strong>Nombre:</strong> {{ empleado.nombre }} {{ empleado.apellido }}</p>
+        <p><strong>RFC:</strong> {{ empleado.rfc }}</p>
+        <p><strong>Puesto:</strong> {{ empleado.puesto }}</p>
+        <p><strong>Fecha Contratación:</strong> {{ empleado.fecha_contratacion }}</p>
+    </div>
+
+    <form method="post" style="display: inline;">
+        {% csrf_token %}
+        <button type="submit" class="btn confirmar">Sí, Borrar</button>
+    </form>
+    
+    <a href="/" class="btn cancelar">Cancelar</a>
+</body>
+</html>
